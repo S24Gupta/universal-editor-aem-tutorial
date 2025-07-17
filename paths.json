@@ -1,10 +1,10 @@
 {
   "mappings": [
-    "/content/eds-test/:/",
-    "/content/eds-test:/.helix/config.json",
-    "/content/eds-test/metadata:/metadata.json"
+    "/content/aem-ue-tutorial/:/",
+    "/content/aem-ue-tutorial/configuration:/.helix/config.json",
+    "/content/aem-ue-tutorial/metadata:/metadata.json"
   ],
   "includes": [
-    "/content/eds-test/"
+    "/content/aem-ue-tutorial/"
   ]
 }
