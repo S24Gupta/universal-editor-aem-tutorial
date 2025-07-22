@@ -167,8 +167,8 @@
       },
       {
         "component": "select",
-        "name": "bannerType",
-        "label": "Banner Type",
+        "name": "bannerVariant",
+        "label": "Banner Variant",
         "options": [
           {
             "name": "leftImageRightText",
