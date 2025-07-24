@@ -1,22 +1,20 @@
+
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
-  const variant = block.querySelector('[data-aue-prop="bannerVariant"]');
-  const bannerVariant = variant?.innerText.trim() || 'lirt';
+  const bannerVariant = block?.children[2]?.innerText?.trim();
 
-  const imgEl = block.querySelector('img[data-aue-prop="bannerImage"]');
-  const imageUrl = imgEl?.src || block.dataset.bannerImage || '';
-  const imageAlt = imgEl?.alt || block.dataset.bannerImageAlt || '';
-
-  const textEl = block.querySelector('[data-aue-prop="text"]');
-  const description = textEl?.innerHTML || block.dataset.bannerText || '';
-
+  const imgEl = block.children[0];
   const img = document.createElement('img');
-  img.src = imageUrl;
-  img.alt = imageAlt;
+  img.src = imgEl?.querySelector("img")?.getAttribute("src");
+  img.alt = imgEl?.querySelector("img")?.getAttribute("alt");
   img.className = 'banner-image';
+
+  const text = block.children[1].innerText.trim();
 
   const textDiv = document.createElement('div');
   textDiv.className = 'banner-text';
-  textDiv.innerHTML = description;
+  textDiv.innerHTML = text;
 
   block.textContent = '';
   if (bannerVariant === 'lirt') {
