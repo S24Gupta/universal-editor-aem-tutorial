@@ -5,7 +5,8 @@
     "/content/aem-ue-tutorial/metadata:/metadata.json",
     "/content/aem-ue-tutorial/placeholders:/placeholders.json",
     "/content/aem-ue-tutorial/English/placeholders:/english/placeholders.json",
-    "/content/aem-ue-tutorial/French/placeholders:/french/placeholders.json"
+    "/content/aem-ue-tutorial/French/placeholders:/french/placeholders.json",
+    "/content/aem-ue-tutorial/redirects:/redirects.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
