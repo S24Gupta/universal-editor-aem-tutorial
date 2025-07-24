@@ -15,5 +15,8 @@ indices:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
       title:
-        select: head > title
-        value: text(el)
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      author:
+        select: head > meta[name="author"]
+        value: attribute(el, "content")
