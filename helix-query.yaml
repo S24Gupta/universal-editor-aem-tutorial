@@ -15,3 +15,5 @@ indices:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
       title:
+        select: head > title
+        value: text(el)
