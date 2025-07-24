@@ -3,7 +3,9 @@
     "/content/aem-ue-tutorial/:/",
     "/content/aem-ue-tutorial/configuration:/.helix/config.json",
     "/content/aem-ue-tutorial/metadata:/metadata.json",
-    "/content/aem-ue-tutorial/placeholders:/placeholders.json"
+    "/content/aem-ue-tutorial/placeholders:/placeholders.json",
+    "/content/aem-ue-tutorial/english/placeholders:/english/placeholders.json",
+    "/content/aem-ue-tutorial/french/placeholders:/french/placeholders.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
