@@ -7,7 +7,7 @@
     "/content/aem-ue-tutorial/English/placeholders:/english/placeholders.json",
     "/content/aem-ue-tutorial/French/placeholders:/french/placeholders.json",
     "/content/aem-ue-tutorial/redirects:/redirects.json",
-    "/content/aem-ue-tutorial/headers:/headers.json"
+    "/content/aem-ue-tutorial/headers:/.helix/headers.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
