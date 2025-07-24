@@ -1,4 +1,6 @@
-export default function decorate(block) {
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+
+export default async function decorate(block) {
   const bannerVariant = block?.children[2]?.innerText?.trim();
 
   const imgEl = block.children[0];
@@ -19,4 +21,14 @@ export default function decorate(block) {
   } else {
     block.append(textDiv, img);
   }
+
+  const language = getMetadata('language');
+  const placeholders = await fetchPlaceholders(language);
+  const { name } = placeholders;
+
+  const placeholderDiv = document.createElement('p');
+  placeholderDiv.className = 'banner-placeholder';
+  placeholderDiv.innerHTML = `<p>${name}</p>`;
+
+  textDiv.appendChild(placeholderDiv);
 }
