@@ -2,7 +2,8 @@
   "mappings": [
     "/content/aem-ue-tutorial/:/",
     "/content/aem-ue-tutorial/configuration:/.helix/config.json",
-    "/content/aem-ue-tutorial/metadata:/metadata.json"
+    "/content/aem-ue-tutorial/metadata:/metadata.json",
+    "/content/aem-ue-tutorial/placeholders:/placeholder.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
