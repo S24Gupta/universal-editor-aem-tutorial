@@ -27,7 +27,7 @@ export default async function decorate(block) {
   const { name } = placeholders;
 
   const placeholderDiv = document.createElement('p');
-  placeholderDiv.className = 'banner-placeholder';
+  placeholderDiv.className = 'placeholder-text';
   placeholderDiv.innerHTML = `<p>${name}</p>`;
 
   textDiv.appendChild(placeholderDiv);
