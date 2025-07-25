@@ -10,6 +10,7 @@
             "template": {
               "name": "Banner",
               "model": "bannermodel",
+              "classes": "bg-red",
               "textContent_text": "<h2>Enter a title</h2><p>...and body text here!</p>"
             }
           }
@@ -37,7 +38,7 @@
         },
         {
           "component": "richtext",
-          "name": "text",
+          "name": "textContent_text",
           "value": "",
           "label": "Text",
           "valueType": "string"
