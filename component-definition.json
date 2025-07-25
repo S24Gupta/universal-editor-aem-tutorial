@@ -93,8 +93,10 @@
                   "name": "Banner",
                   "model": "bannermodel",
                   "classes": [
-                    "abc",
-                    "xyz"
+                    {
+                      "name": "abc",
+                      "value": "abcvalue"
+                    }
                   ]
                 }
               }

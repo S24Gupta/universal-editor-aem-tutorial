@@ -10,7 +10,10 @@
             "template": {
               "name": "Banner",
               "model": "bannermodel",
-              "classes": ["abc", "xyz"]
+              "classes": [ {
+                "name": "abc",
+                "value": "abcvalue"
+              }]
             }
           }
         }
