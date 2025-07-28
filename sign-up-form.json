@@ -1,0 +1,152 @@
+{
+    "total": 21,
+    "offset": 0,
+    "limit": 21,
+    "data": [
+      {
+        "Name": "headline",
+        "Type": "heading",
+        "Label": "Sign up and stay informed",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "description",
+        "Type": "plaintext",
+        "Label": "Get ready for essential news and insights. You can also access and download complimentary resources. Sign up below.",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "firstName",
+        "Type": "text",
+        "Label": "First Name",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "x",
+        "Style": "",
+        "ID": "",
+        "Fieldset": "nameFS"
+      },
+      {
+        "Name": "lastName",
+        "Type": "text",
+        "Label": "Last Name",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "true",
+        "Style": "",
+        "ID": "",
+        "Fieldset": "nameFS"
+      },
+      {
+        "Name": "nameFS",
+        "Type": "fieldset",
+        "Label": "",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "email",
+        "Type": "text",
+        "Label": "Email Address",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "x",
+        "Style": "",
+        "ID": "",
+        "Fieldset": "secondLineFS"
+      },
+      {
+        "Name": "npinumber",
+        "Type": "text",
+        "Label": "NPI number",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "true",
+        "Style": "",
+        "ID": "",
+        "Fieldset": "secondLineFS"
+      },
+      {
+        "Name": "secondLineFS",
+        "Type": "fieldset",
+        "Label": "",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "optIn",
+        "Type": "checkbox",
+        "Label": "By opting in, I confirm that I am 18 years of age or older and I understand that the information I have provided will be used by Otsuka America Pharmaceutical, Inc. (“Otsuka”) and its contracted third parties to contact me with relevant information and about Otsuka products that may be relevant to me. I will have the ability to opt out from receiving Otsuka communications at any time by calling 1-833-468-7852 or by following the opt-out instruction within the communications.",
+        "Placeholder": "",
+        "Value": "optin",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "description",
+        "Type": "plaintext",
+        "Label": "By submitting this form, you are agreeing to our Terms of Use and Privacy Policy.",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      },
+      {
+        "Name": "submit",
+        "Type": "submit",
+        "Label": "",
+        "Placeholder": "",
+        "Value": "",
+        "Options": "",
+        "Mandatory": "",
+        "Style": "",
+        "ID": "",
+        "Fieldset": ""
+      }
+    ],
+    "columns": [
+      "Name",
+      "Type",
+      "Label",
+      "Placeholder",
+      "Value",
+      "Options",
+      "Mandatory",
+      "Style",
+      "ID",
+      "Fieldset"
+    ],
+    ":type": "sheet"
+  }
