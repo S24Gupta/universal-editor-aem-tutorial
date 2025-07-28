@@ -8,7 +8,8 @@
     "/content/aem-ue-tutorial/French/placeholders:/french/placeholders.json",
     "/content/aem-ue-tutorial/redirects:/redirects.json",
     "/content/aem-ue-tutorial/headers:/.helix/headers.json",
-    "/content/aem-ue-tutorial/query-index:/query-index.json"
+    "/content/aem-ue-tutorial/query-index:/query-index.json",
+    "/content/aem-ue-tutorial/signup-form:/signup-form.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
