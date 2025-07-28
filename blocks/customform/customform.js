@@ -1,4 +1,4 @@
-import createField from './custom-form-fields.js';
+import createField from './custom-form-field.js';
 
 async function createForm(formHref, submitHref) {
   const resp = await fetch(formHref);
