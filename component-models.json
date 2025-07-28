@@ -243,6 +243,16 @@
     ]
   },
   {
+    "id": "customForm",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "formJson",
+        "label": "Form Json path"
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
