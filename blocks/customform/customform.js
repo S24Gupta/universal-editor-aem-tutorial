@@ -77,7 +77,7 @@ async function handleSubmit(form) {
 }
 
 export default async function decorate(block) {
-  const publishURL = 'https://publish-p7906-e91530.adobeaemcloud.com';
+  const publishURL = 'https://author-p7906-e91558.adobeaemcloud.com';
   const formPath = block.children.item(0).children.item(0).children.item(0).children.item(0).title;
   const formLink = `${publishURL + formPath}`;
   const submitLink = 'https://google.com';
