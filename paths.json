@@ -10,7 +10,7 @@
     "/content/aem-ue-tutorial/headers:/.helix/headers.json",
     "/content/aem-ue-tutorial/query-index:/query-index.json",
     "/content/aem-ue-tutorial/forms/signup-form:/forms/signup-form.json",
-    "/content/aem-ue-tutorial/forms/savecard-form:/forms/savecard-form.json"
+    "/content/aem-ue-tutorial/forms/savingscard-form:/forms/savingscard-form.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"
