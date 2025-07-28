@@ -18,7 +18,8 @@
       "fragment",
       "banner",
       "form",
-      "embed-adaptive-form"
+      "embed-adaptive-form",
+      "custom-form"
     ]
   },
   {
