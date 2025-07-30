@@ -80,9 +80,16 @@ const createSelect = async (fd) => {
       option.value = value.trim();
     }
 
-    if (option.value === select.value) {
-      option.setAttribute('selected', '');
-    }
+    select.addEventListener('change', () => {
+      Array.from(select.options).forEach(option => {
+        if (option.value === select.value) {
+          option.setAttribute('selected', '');
+        } else {
+          option.removeAttribute('selected');
+        }
+      });
+    });
+
     select.add(option);
     return option;
   };
@@ -92,18 +99,27 @@ const createSelect = async (fd) => {
     ph.setAttribute('disabled', '');
   }
 
+  async function setValues(resp, options) {
+    const json = await resp.json();
+    json.data.forEach((opt) => {
+      options.push({
+        text: opt.Option,
+        value: opt.Value || opt.Option,
+      });
+    });
+  }
+
   if (fd.Options) {
     let options = [];
     if (fd.Options.startsWith('https://')) {
       const optionsUrl = new URL(fd.Options);
       const resp = await fetch(`${optionsUrl.pathname}${optionsUrl.search}`);
-      const json = await resp.json();
-      json.data.forEach((opt) => {
-        options.push({
-          text: opt.Option,
-          value: opt.Value || opt.Option,
-        });
-      });
+      await setValues(resp, options);
+
+    } else if (fd.Options.startsWith('/')) {
+      const resp = await fetch(`${fd.Options}`);
+      await setValues(resp, options);
+
     } else {
       options = fd.Options.split(',').map((opt) => ({
         text: opt.trim(),

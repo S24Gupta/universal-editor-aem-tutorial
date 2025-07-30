@@ -37,7 +37,8 @@
 .customform .field-wrapper:nth-of-type(5),
 .customform .field-wrapper:nth-of-type(6), /* DOB & Gender */
 .customform .field-wrapper:nth-of-type(7),
-.customform .field-wrapper:nth-of-type(8), /* AddressLine1 & AddressLine2 */
+.customform .field-wrapper:nth-of-type(8),
+.customform .field-wrapper:nth-of-type(13),/* AddressLine1 & AddressLine2 */
 .customform .fieldset-wrapper .field-wrapper {
     flex: 1 1 calc(50% - 0.75rem); /* 2-column layout */
 }
@@ -103,10 +104,6 @@ fieldset.radio-option {
     display: flex;
     gap: 1.5rem;
     margin: 0px;
-}
-
-.customform .field-wrapper:nth-of-type(12) {
-    flex: 1 1 calc(50% - 0.75rem);
 }
 
 .field-wrapper.hidden-wrapper {

@@ -11,7 +11,8 @@
     "/content/aem-ue-tutorial/query-index:/query-index.json",
     "/content/aem-ue-tutorial/forms/signup-form:/forms/signup-form.json",
     "/content/aem-ue-tutorial/forms/savingscard-form:/forms/savingscard-form.json",
-    "/content/aem-ue-tutorial/spreadsheets/states:/states.json"
+    "/content/aem-ue-tutorial/spreadsheets/states:/states.json",
+    "/content/aem-ue-tutorial/spreadsheets/dummy-url:/dummy-url.json"
   ],
   "includes": [
     "/content/aem-ue-tutorial/"

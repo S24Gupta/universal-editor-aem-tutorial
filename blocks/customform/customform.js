@@ -65,7 +65,7 @@ async function handleSubmit(form) {
       }
     } else {
       const error = await response.text();
-      throw new Error(error);
+      window.location.href = "/forms/thankyou-page";
     }
   } catch (e) {
     // eslint-disable-next-line no-console
@@ -79,7 +79,7 @@ async function handleSubmit(form) {
 export default async function decorate(block) {
   const formPath = block.children.item(0).children.item(0).children.item(0).children.item(0).title;
   const formLink = `${formPath}`;
-  const submitLink = 'https://google.com';
+  const submitLink = 'https://mocki.io/v1/36caae36-afdb-4f71-a493-cd0147ea2afa';
   if (!formLink || !submitLink) return;
 
   const form = await createForm(formLink, submitLink);
