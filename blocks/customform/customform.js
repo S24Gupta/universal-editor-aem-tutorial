@@ -42,8 +42,8 @@ function generatePayload(form) {
   return payload;
 }
 
-async function handleSubmit(form) {
-  if (form.getAttribute('data-submitting') === 'true') return;
+async function handleSubmit(form, thankYouPage) {
+  if (form.getAttribute('data-submitting') === 'true')   return;
 
   const submit = form.querySelector('button[type="submit"]');
   try {
@@ -53,19 +53,45 @@ async function handleSubmit(form) {
     // create payload
     const payload = generatePayload(form);
     const response = await fetch(form.dataset.action, {
-      method: 'POST',
-      body: JSON.stringify({ data: payload }),
+      method: 'GET',
+     // body: JSON.stringify({ data: payload }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     if (response.ok) {
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
+      if (thankYouPage) {
+        window.location.href = thankYouPage;
+      } else {
+        const successMsg = form.querySelector('.form-success-message');
+        if (!successMsg) {
+          const newSuccessMsg = document.createElement('div');
+          newSuccessMsg.className = 'form-success-message';
+          newSuccessMsg.textContent = 'Form submitted successfully!';
+          form.parentNode.insertBefore(newSuccessMsg, form);
+          setTimeout(() => {
+            if (errorMsg && errorMsg.parentNode) {
+              errorMsg.parentNode.removeChild(newSuccessMsg);
+            }
+          }, 10000);
+        }
       }
     } else {
       const error = await response.text();
-      window.location.href = "/forms/thankyou-page";
+      let errorMsg = form.querySelector('.form-error-message');
+      if (!errorMsg) {
+        errorMsg = document.createElement('div');
+        errorMsg.className = 'form-error-message';
+
+        form.parentNode.insertBefore(errorMsg, form);
+        setTimeout(() => {
+          if (errorMsg && errorMsg.parentNode) {
+            errorMsg.parentNode.removeChild(errorMsg);
+          }
+        }, 10000);
+      }
+      errorMsg.textContent = 'An error occurred. Please try again.';
+      console.error('Form submission error:', error);
     }
   } catch (e) {
     // eslint-disable-next-line no-console
@@ -79,7 +105,8 @@ async function handleSubmit(form) {
 export default async function decorate(block) {
   const formPath = block.children.item(0).children.item(0).children.item(0).children.item(0).title;
   const formLink = `${formPath}`;
-  const submitLink = 'https://mocki.io/v1/36caae36-afdb-4f71-a493-cd0147ea2afa';
+  const submitLink = '/dummy-url';
+  const thankYouPage = block.dataset.thankyou;
   if (!formLink || !submitLink) return;
 
   const form = await createForm(formLink, submitLink);
@@ -89,7 +116,7 @@ export default async function decorate(block) {
     e.preventDefault();
     const valid = form.checkValidity();
     if (valid) {
-      handleSubmit(form);
+      handleSubmit(form, thankYouPage);
     } else {
       const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
       if (firstInvalidEl) {

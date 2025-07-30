@@ -133,3 +133,21 @@ fieldset.radio-option {
     align-items: center;
     justify-content: center;
 }
+.form-success-message {
+    background-color: #e6f9e6;
+    color: #2e5c36;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.form-error-message {
+    background-color: #f9e6e6;
+    color: #5c2e2e;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
