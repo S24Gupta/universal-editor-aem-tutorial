@@ -1,16 +1,17 @@
-import { toClassName } from '../../scripts/aem.js';
+import {toClassName} from '../../scripts/aem.js';
 
 function createFieldWrapper(fd) {
   const fieldWrapper = document.createElement('div');
   if (fd.Style) fieldWrapper.className = fd.Style;
   fieldWrapper.classList.add('field-wrapper', `${fd.Type}-wrapper`);
 
-  fieldWrapper.dataset.fieldset = fd.Fieldset;
+  fd.Fieldset ? fieldWrapper.dataset.fieldset = fd.Fieldset : null;
 
   return fieldWrapper;
 }
 
 const ids = [];
+
 function generateFieldId(fd, suffix = '') {
   const slug = toClassName(`form-${fd.Name}${suffix}`);
   ids[slug] = ids[slug] || 0;
@@ -26,6 +27,7 @@ function createLabel(fd) {
   label.setAttribute('for', fd.Id);
   if (fd.Mandatory.toLowerCase() === 'true' || fd.Mandatory.toLowerCase() === 'x') {
     label.dataset.required = true;
+    label.textContent += '*';
   }
   return label;
 }
@@ -36,6 +38,8 @@ function setCommonAttributes(field, fd) {
   field.required = fd.Mandatory && (fd.Mandatory.toLowerCase() === 'true' || fd.Mandatory.toLowerCase() === 'x');
   field.placeholder = fd.Placeholder;
   field.value = fd.Value;
+  field.maxLength = fd.Maxlength;
+  field.autocomplete = fd.Autocomplete || 'off';
 }
 
 const createHeading = (fd) => {
@@ -48,7 +52,7 @@ const createHeading = (fd) => {
 
   fieldWrapper.append(heading);
 
-  return { field: heading, fieldWrapper };
+  return {field: heading, fieldWrapper};
 };
 
 const createPlaintext = (fd) => {
@@ -60,13 +64,13 @@ const createPlaintext = (fd) => {
 
   fieldWrapper.append(text);
 
-  return { field: text, fieldWrapper };
+  return {field: text, fieldWrapper};
 };
 
 const createSelect = async (fd) => {
   const select = document.createElement('select');
   setCommonAttributes(select, fd);
-  const addOption = ({ text, value }) => {
+  const addOption = ({text, value}) => {
     const option = document.createElement('option');
     if (text === undefined) {
       option.text = 'none';
@@ -84,7 +88,7 @@ const createSelect = async (fd) => {
   };
 
   if (fd.Placeholder) {
-    const ph = addOption({ text: fd.Placeholder, value: '' });
+    const ph = addOption({text: fd.Placeholder, value: ''});
     ph.setAttribute('disabled', '');
   }
 
@@ -114,7 +118,7 @@ const createSelect = async (fd) => {
   fieldWrapper.append(select);
   fieldWrapper.prepend(createLabel(fd));
 
-  return { field: select, fieldWrapper };
+  return {field: select, fieldWrapper};
 };
 
 const createConfirmation = (fd, form) => {
@@ -129,9 +133,20 @@ const createSubmit = (fd) => {
   button.classList.add('button');
   button.type = 'submit';
 
+  // Download icon SVG
+  const icon = document.createElement('span');
+  icon.className = 'download-icon';
+  icon.innerHTML = `
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M10 2a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L9 11.586V3a1 1 0 0 1 1-1zm-7 13a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z"/>
+    </svg>
+  `;
+
+  button.appendChild(icon);
+
   const fieldWrapper = createFieldWrapper(fd);
   fieldWrapper.append(button);
-  return { field: button, fieldWrapper };
+  return {field: button, fieldWrapper};
 };
 
 const createTextArea = (fd) => {
@@ -144,7 +159,7 @@ const createTextArea = (fd) => {
   fieldWrapper.append(field);
   fieldWrapper.prepend(label);
 
-  return { field, fieldWrapper };
+  return {field, fieldWrapper};
 };
 
 const createInput = (fd) => {
@@ -156,13 +171,81 @@ const createInput = (fd) => {
   const label = createLabel(fd);
   field.setAttribute('aria-labelledby', label.id);
   fieldWrapper.append(field);
-  if (fd.Type === 'radio' || fd.Type === 'checkbox') {
-    fieldWrapper.append(label);
-  } else {
-    fieldWrapper.prepend(label);
+  fieldWrapper.prepend(label);
+
+  // If type is email, add validation for email format
+  if (fd.Type === 'email') {
+    field.addEventListener('input', () => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const errorDiv = fieldWrapper.querySelector(`#${field.id}-error`);
+      if (!emailPattern.test(field.value) && field.value) {
+        if (!errorDiv) {
+          const newErrorDiv = document.createElement('div');
+          newErrorDiv.id = `${field.id}-error`;
+          newErrorDiv.classList.add('error-message');
+          newErrorDiv.textContent = 'Please enter a valid email address.';
+          fieldWrapper.append(newErrorDiv);
+        }
+      } else if (errorDiv) {
+        errorDiv.remove();
+      }
+    });
+
+    // If verify email is not equal to email, add validation
+    if (fd.Id === 'edit-email-address-mail-2') {
+      field.addEventListener('input', () => {
+        const verifyEmailField = document.querySelector('input[name="email_address[mail_1]"]');
+        const errorDiv = fieldWrapper.querySelector(`#${field.id}-error`);
+        if (verifyEmailField.value !== field.value) {
+          if (!errorDiv) {
+            const newErrorDiv = document.createElement('div');
+            newErrorDiv.id = `${field.id}-error`;
+            newErrorDiv.classList.add('error-message');
+            newErrorDiv.textContent = 'Email addresses do not match.';
+            fieldWrapper.append(newErrorDiv);
+          }
+        } else if (errorDiv) {
+          errorDiv.remove();
+        }
+      });
+    }
   }
 
-  return { field, fieldWrapper };
+  // If type is number, limit digits to maxlength
+  if (fd.Type === 'number' && fd.Maxlength) {
+    field.addEventListener('input', () => {
+      if (field.value && field.value.length > fd.Maxlength) {
+        field.value = field.value.slice(0, fd.Maxlength);
+      }
+    });
+  }
+
+  // If type is date, add validation for 18 years
+  if (fd.Type === 'date') {
+    field.addEventListener('change', () => {
+      const inputDate = new Date(field.value);
+      const today = new Date();
+      const eighteenYearsAgo = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate()
+      );
+      if (inputDate > eighteenYearsAgo) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = `${field.id}-error`;
+        errorDiv.classList.add('error-message');
+        errorDiv.textContent = 'You must be at least 18 years old.';
+        fieldWrapper.append(errorDiv);
+      } else {
+        const errorDiv = fieldWrapper.querySelector(`#${field.id}-error`);
+        if (errorDiv) {
+          errorDiv.remove();
+        }
+      }
+    });
+  }
+
+  return {field, fieldWrapper};
 };
 
 const createFieldset = (fd) => {
@@ -178,11 +261,11 @@ const createFieldset = (fd) => {
   const fieldWrapper = createFieldWrapper(fd);
   fieldWrapper.append(field);
 
-  return { field, fieldWrapper };
+  return {field, fieldWrapper};
 };
 
 const createToggle = (fd) => {
-  const { field, fieldWrapper } = createInput(fd);
+  const {field, fieldWrapper} = createInput(fd);
   field.type = 'checkbox';
   if (!field.value) field.value = 'on';
   field.classList.add('toggle');
@@ -200,23 +283,56 @@ const createToggle = (fd) => {
     field.checked = !field.checked;
   });
 
-  return { field, fieldWrapper };
+  return {field, fieldWrapper};
 };
 
 const createCheckbox = (fd) => {
-  const { field, fieldWrapper } = createInput(fd);
-  if (!field.value) field.value = 'checked';
-  fieldWrapper.classList.add('selection-wrapper');
+  const field = document.createElement('input');
+  field.type = 'checkbox';
+  setCommonAttributes(field, fd);
 
-  return { field, fieldWrapper };
+  const optionWrapper = document.createElement('fieldset');
+  optionWrapper.classList.add('checkbox-option');
+
+  const fieldWrapper = createFieldWrapper(fd);
+  const label = createLabel(fd);
+  field.setAttribute('aria-labelledby', label.id);
+
+  optionWrapper.append(field, label);
+  fieldWrapper.append(optionWrapper);
+  return {field, fieldWrapper};
 };
 
 const createRadio = (fd) => {
-  const { field, fieldWrapper } = createInput(fd);
-  if (!field.value) field.value = fd.Label || 'on';
-  fieldWrapper.classList.add('selection-wrapper');
 
-  return { field, fieldWrapper };
+  if (fd.Options) {
+    const fieldWrapper = createFieldWrapper(fd);
+    const label = createLabel(fd);
+    fieldWrapper.append(label);
+
+    fd.Options.split(',').forEach((opt) => {
+
+      const optionWrapper = document.createElement('fieldset');
+      optionWrapper.classList.add('radio-option');
+      const radio = document.createElement('input');
+      const optValue = opt.trim().toLowerCase();
+      radio.type = 'radio';
+      radio.name = `${fd.Name}`;
+      radio.value = optValue;
+      radio.id = generateFieldId(fd, `-${optValue}`);
+      if (fd.Value && fd.Value.toLowerCase() === optValue) {
+        radio.checked = true;
+      }
+      const optionLabel = document.createElement('label');
+      optionLabel.setAttribute('for', radio.id);
+      optionLabel.textContent = opt.trim();
+
+      optionWrapper.append(radio, optionLabel);
+      fieldWrapper.append(optionWrapper);
+    });
+
+    return {field: label, fieldWrapper};
+  }
 };
 
 const FIELD_CREATOR_FUNCTIONS = {
@@ -230,6 +346,7 @@ const FIELD_CREATOR_FUNCTIONS = {
   fieldset: createFieldset,
   checkbox: createCheckbox,
   radio: createRadio,
+  hidden: createInput,
 };
 
 export default async function createField(fd, form) {
