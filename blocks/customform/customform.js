@@ -59,7 +59,14 @@ async function handleSubmit(form, thankYouPage) {
         'Content-Type': 'application/json',
       },
     });
-    if (response.ok) {
+    if (response.status === 200) {
+      // Generate and auto-download PDF with "hell pdf"
+       const { jsPDF } = window.jspdf;
+       const doc = new jsPDF();
+       doc.text('Sample PDF generated', 10, 10);
+       doc.save('form-submission.pdf');
+
+      // Redirect to thank you page or show success message
       if (thankYouPage) {
         window.location.href = thankYouPage;
       } else {
@@ -105,8 +112,8 @@ async function handleSubmit(form, thankYouPage) {
 export default async function decorate(block) {
   const formPath = block.children.item(0).children.item(0).children.item(0).children.item(0).title;
   const formLink = `${formPath}`;
-  const submitLink = '/dummy-url';
-  const thankYouPage = block.dataset.thankyou;
+  const submitLink = '/dummy-url.json'; // This should be replaced with the actual submit URL if available
+  const thankYouPage = block?.children.item(1)?.children.item(0)?.children.item(0)?.children.item(0)?.href || null;
   if (!formLink || !submitLink) return;
 
   const form = await createForm(formLink, submitLink);

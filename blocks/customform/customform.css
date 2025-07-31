@@ -32,21 +32,13 @@
 }
 
 /* Side-by-side layout for key pairs using nth-of-type logic */
-.customform .field-wrapper:nth-of-type(3),
-.customform .field-wrapper:nth-of-type(4), /* FirstName & LastName */
-.customform .field-wrapper:nth-of-type(5),
-.customform .field-wrapper:nth-of-type(6), /* DOB & Gender */
-.customform .field-wrapper:nth-of-type(7),
-.customform .field-wrapper:nth-of-type(8),
-.customform .field-wrapper:nth-of-type(13),/* AddressLine1 & AddressLine2 */
+.customform .col2-column-wrapper,
 .customform .fieldset-wrapper .field-wrapper {
     flex: 1 1 calc(50% - 0.75rem); /* 2-column layout */
 }
 
 /* For Zip Code, City, and State (3-column) */
-.customform .field-wrapper:nth-of-type(9),
-.customform .field-wrapper:nth-of-type(10),
-.customform .field-wrapper:nth-of-type(11) {
+.customform .col3-column-wrapper{
     flex: 1 1 calc(33.33% - 1rem);
 }
 
