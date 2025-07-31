@@ -2,7 +2,6 @@ import {toClassName} from '../../scripts/aem.js';
 
 function createFieldWrapper(fd) {
   const fieldWrapper = document.createElement('div');
-
   fieldWrapper.classList.add('field-wrapper', `${fd.Type}-wrapper`, `${fd.Style || 'col1'}-column-wrapper`);
 
   fd.Fieldset ? fieldWrapper.dataset.fieldset = fd.Fieldset : null;
