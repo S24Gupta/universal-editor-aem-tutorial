@@ -63,8 +63,9 @@
     font-weight: normal;
     padding-left: 0;
 }
-.customform .radio-wrapper input[type="radio"] {
-    margin-right: 0.5rem;
+.customform .radio-wrapper input[type="radio"],
+.customform .checkbox-wrapper input[type="checkbox"]{
+    margin-top: 0.5rem;
 }
 
 /*.customform .radio-wrapper label,
