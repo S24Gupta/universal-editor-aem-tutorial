@@ -77,8 +77,8 @@ async function handleSubmit(form, thankYouPage) {
           newSuccessMsg.textContent = 'Form submitted successfully!';
           form.parentNode.insertBefore(newSuccessMsg, form);
           setTimeout(() => {
-            if (errorMsg && errorMsg.parentNode) {
-              errorMsg.parentNode.removeChild(newSuccessMsg);
+            if (newSuccessMsg && newSuccessMsg.parentNode) {
+              newSuccessMsg.parentNode.removeChild(newSuccessMsg);
             }
           }, 10000);
         }
