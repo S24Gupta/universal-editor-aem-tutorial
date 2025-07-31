@@ -34,12 +34,12 @@
 /* Side-by-side layout for key pairs using nth-of-type logic */
 .customform .col2-column-wrapper,
 .customform .fieldset-wrapper .field-wrapper {
-    flex: 1 1 calc(50% - 0.75rem); /* 2-column layout */
+    flex: 0 1 calc(50% - 0.75rem); /* 2-column layout */
 }
 
 /* For Zip Code, City, and State (3-column) */
 .customform .col3-column-wrapper{
-    flex: 1 1 calc(33.33% - 1rem);
+    flex: 0 1 calc(33.33% - 1rem);
 }
 
 /* Radio and Checkbox blocks full-width */
