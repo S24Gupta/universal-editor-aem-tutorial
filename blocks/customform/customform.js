@@ -1,7 +1,21 @@
 import createField from './custom-form-field.js';
 
 async function createForm(formHref, submitHref) {
-  const resp = await fetch(formHref);
+
+  let mapping = formHref;
+  if(!formHref.endsWith('json')) {
+    const mappingresp = await fetch("/paths.json");
+    const mappingData = await mappingresp.json();
+    //let mapping = formHref;
+    for (const [key, value] of Object.entries(mappingData.mappings)) {
+      const [before, after] = value.split(':');
+      if (before === formHref) {
+        mapping = after;
+        break;
+      }
+    }
+  }
+  const resp = await fetch(mapping);
   const json = await resp.json();
 
   const form = document.createElement('form');
