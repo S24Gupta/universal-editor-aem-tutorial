@@ -1,0 +1,15 @@
+.faintlybanner {
+   font-size: 1.2em;
+   display: flex;
+}
+
+.faintlybanner img.banner-image {
+    height: auto;
+    max-width: 50%;
+    display: block;
+        border-radius: 500px;
+}
+
+.faintlybanner > div.banner-text {
+    color: white;
+}

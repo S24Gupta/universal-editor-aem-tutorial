@@ -52,6 +52,7 @@
         "columns",
         "fragment",
         "banner",
+        "faintlybanner",
         "form",
         "embed-adaptive-form",
         "customform"

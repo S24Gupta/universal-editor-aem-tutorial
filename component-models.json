@@ -258,6 +258,69 @@
     ]
   },
   {
+    "id": "faintlybannermodel",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "bannerImage",
+        "label": "BannerImage",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "bannerImageAlt",
+        "label": "Banner Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "textContent_text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "bannerVariant",
+        "label": "Banner Variant",
+        "options": [
+          {
+            "name": "leftImageRightText",
+            "value": "lirt"
+          },
+          {
+            "name": "rightImageLeftText",
+            "value": "rilt"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Background Color",
+        "description": "The quote background color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Red",
+            "value": "bg-red"
+          },
+          {
+            "name": "Green",
+            "value": "bg-green"
+          },
+          {
+            "name": "Blue",
+            "value": "bg-blue"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
