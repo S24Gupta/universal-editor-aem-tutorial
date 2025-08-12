@@ -147,6 +147,12 @@
         {
           "title": "Slide",
           "id": "slide",
+          "addable": true,
+          "removable": true,
+          "draggable": true,
+          "maxItems": 10,
+          "minItems": 1,
+          "defaultItems": 1,
           "plugins": {
             "xwalk": {
               "page": {
