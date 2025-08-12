@@ -55,7 +55,8 @@
         "faintlybanner",
         "form",
         "embed-adaptive-form",
-        "customform"
+        "customform",
+        "carousel"
       ]
     }
   ]
