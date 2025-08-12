@@ -1,12 +1,11 @@
 import createField from './custom-form-field.js';
 
 async function createForm(formHref, submitHref) {
-
   let mapping = formHref;
-  if(!formHref.endsWith('json')) {
-    const mappingresp = await fetch("/paths.json");
+  if (!formHref.endsWith('json')) {
+    const mappingresp = await fetch('/paths.json');
     const mappingData = await mappingresp.json();
-    //let mapping = formHref;
+    // let mapping = formHref;
     for (const [key, value] of Object.entries(mappingData.mappings)) {
       const [before, after] = value.split(':');
       if (before === formHref) {
@@ -57,7 +56,7 @@ function generatePayload(form) {
 }
 
 async function handleSubmit(form, thankYouPage) {
-  if (form.getAttribute('data-submitting') === 'true')   return;
+  if (form.getAttribute('data-submitting') === 'true') return;
 
   const submit = form.querySelector('button[type="submit"]');
   try {
@@ -68,17 +67,17 @@ async function handleSubmit(form, thankYouPage) {
     const payload = generatePayload(form);
     const response = await fetch(form.dataset.action, {
       method: 'GET',
-     // body: JSON.stringify({ data: payload }),
+      // body: JSON.stringify({ data: payload }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     if (response.status === 200) {
       // Generate and auto-download PDF with "hell pdf"
-       const { jsPDF } = window.jspdf;
-       const doc = new jsPDF();
-       doc.text('Sample PDF generated', 10, 10);
-       doc.save('form-submission.pdf');
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text('Sample PDF generated', 10, 10);
+      doc.save('form-submission.pdf');
 
       // Redirect to thank you page or show success message
       if (thankYouPage) {
