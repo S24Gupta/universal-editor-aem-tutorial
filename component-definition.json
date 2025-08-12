@@ -131,7 +131,7 @@
         },
         {
           "title": "Carousel",
-          "id": "Carousel",
+          "id": "carousel",
           "plugins": {
             "xwalk": {
               "page": {
