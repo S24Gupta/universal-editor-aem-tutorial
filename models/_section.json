@@ -56,7 +56,8 @@
         "form",
         "embed-adaptive-form",
         "customform",
-        "carousel"
+        "carousel",
+        "questionnaire"
       ]
     }
   ]

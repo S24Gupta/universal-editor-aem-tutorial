@@ -5174,5 +5174,35 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "questionnaire",
+    "fields": [
+      {
+        "component": "text",
+        "name": "questionHeadline",
+        "label": "Questionnaire headline"
+      },
+      {
+        "component": "text",
+        "name": "questionTitle",
+        "label": "Questionnaire title"
+      },
+      {
+        "component": "richText",
+        "name": "questiondescription",
+        "label": "Questionnaire description"
+      },
+      {
+        "component": "aem-content",
+        "name": "questionSpreadsheetPath",
+        "label": "Question Spreadsheet path"
+      },
+      {
+        "component": "text",
+        "name": "startButtonText",
+        "label": "Start button text"
+      }
+    ]
   }
 ]
