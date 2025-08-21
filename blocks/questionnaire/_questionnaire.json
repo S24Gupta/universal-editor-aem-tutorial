@@ -32,12 +32,12 @@
         },
         {
           "component": "richText",
-          "name": "questiondescription",
+          "name": "questionnairedescription",
           "label": "Questionnaire description"
         },
         {
           "component": "aem-content",
-          "name": "questionSpreadsheetPath",
+          "name": "questionnaireSpreadsheetPath",
           "label": "Question Spreadsheet path"
         },
         {
