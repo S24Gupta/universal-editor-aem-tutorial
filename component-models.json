@@ -5202,6 +5202,11 @@
         "component": "text",
         "name": "startButtonText",
         "label": "Start button text"
+      },
+      {
+        "component": "richtext",
+        "name": "questionnairefooter",
+        "label": "Questionnaire footer"
       }
     ]
   }
