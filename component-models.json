@@ -5207,6 +5207,20 @@
         "component": "richtext",
         "name": "questionnairefooter",
         "label": "Questionnaire footer"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "webBackgroundImage",
+        "label": "Web Banner Image",
+        "multi": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobBackgroundImage",
+        "label": "Mobile Banner Image",
+        "multi": true
       }
     ]
   }

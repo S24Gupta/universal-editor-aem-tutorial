@@ -54,16 +54,44 @@
             </svg>
         </div>
         <div class="questionnaire--form__content">
-            <h5 class="questionnaire--form__content--headline">Depression Journey Questionnaire</h5>
-            <h1 class="questionnaire--form__content--title">Mind What Matters</h1>
+            <h5 class="questionnaire--form__content--headline">${headline}</h5>
+            <h1 class="questionnaire--form__content--title">${title}</h1>
             <div class="questionnaire--form__content--description">
-                <p>Are you still struggling with symptoms of depression, even on an antidepressant?
-                    Answering these questions and sharing them with your doctor could be a helpful first
-                    step in making progress on your journey.</p>
-                <p>Your answers are completely confidential and will not be stored or shared.</p>
+                ${description}
             </div>
         </div>
     </div>
-    <div id="questionnaire"><div><div class="survey--wrapper"><div class="survey--progress"><div class="progress-bar"><div class="progress-bar--wrapper"><div class="progress-bar--line"><div class="progress-bar--step" style="width: 33.3333%;"></div></div><div class="progress-bar--counter">2/6</div></div></div></div><div class="survey--questions"><span>Your Treatment History</span><div class="slide-2 data-analytics-form-questionblock "><h3 class="data-analytics-form-question">Since you've been diagnosed, how many antidepressants have you tried?</h3><div class="options"><div><input type="radio" id="option-0" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="1-3"><label for="option-0">1-3</label></div><div><input type="radio" id="option-1" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="4-5"><label for="option-1">4-5</label></div><div><input type="radio" id="option-2" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="6+"><label for="option-2">6+</label></div></div></div><div class="survey--buttons"><button type="button" class="btn-back analytics-tag analytic-tags-processed" data-once="analyticsCustom" data-analytics-link="{&quot;name&quot;:&quot;Back&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">Back</button><button type="button" class="btn btn-md btn-yellow analytics-tag analytic-tags-processed" data-once="analyticsCustom" data-analytics-link="{&quot;name&quot;:&quot;Next&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">Next</button></div></div></div><div class="survey--footer"><div class="text"><p>This resource is provided for informational purposes only and is not intended as a substitute for a healthcare professional’s independent judgment. Always follow the healthcare advice of your doctor. Do not change the way you take your medication without talking with your doctor. </p><p>If you ever have suicidal thoughts, call your doctor or 911, or go to an emergency room. Take suicidal thoughts seriously and get help immediately.</p></div></div></div></div>
+    <div id="questionnaire">
+        <div><div class="survey--wrapper">
+            <div class="survey--progress">
+                <div class="progress-bar">
+                    <div class="progress-bar--wrapper">
+                        <div class="progress-bar--line">
+                            <div class="progress-bar--step" style="width: 33.3333%;">
+
+                            </div>
+                        </div>
+                        <div class="progress-bar--counter">2/6</div>
+                        </div>
+                </div>
+            </div>
+            <div class="survey--questions">
+                <span>Your Treatment History</span>
+                <div class="slide-2 data-analytics-form-questionblock ">
+                    <h3 class="data-analytics-form-question">Since you've been diagnosed, how many antidepressants have you tried?</h3><div class="options"><div><input type="radio" id="option-0" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="1-3"><label for="option-0">1-3</label></div><div><input type="radio" id="option-1" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="4-5"><label for="option-1">4-5</label></div><div><input type="radio" id="option-2" class="data-analytics-form-answer" name="Since you've been diagnosed, how many antidepressants have you tried?" value="6+"><label for="option-2">6+</label></div></div>
+                </div>
+                <div class="survey--buttons">
+                    <button type="button" class="start-button btn btn-lg btn-yellow" data-once="analytic-tags-processed" data-analytics-link="{&quot;name&quot;:&quot;Get Started&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">${submitText}</button>
+
+                    <button type="button" class="btn-back analytics-tag analytic-tags-processed" data-once="analyticsCustom" data-analytics-link="{&quot;name&quot;:&quot;Back&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">Back</button>
+
+                    <button type="button" class="btn btn-md btn-yellow analytics-tag analytic-tags-processed" data-once="analyticsCustom" data-analytics-link="{&quot;name&quot;:&quot;Next&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">Next</button>
+                </div>
+            </div>
+        </div>
+            <div class="survey--footer"><div class="text">${footer}</div>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
