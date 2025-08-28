@@ -5223,5 +5223,16 @@
         "multi": true
       }
     ]
+  },
+  {
+    "id": "videopageanimation",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "VideoFile",
+        "label": "Video File"
+      }
+    ]
   }
 ]
