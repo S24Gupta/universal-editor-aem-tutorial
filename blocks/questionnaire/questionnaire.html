@@ -93,7 +93,6 @@
                     ${description}
                 </div>
             </div>
-            <div data-fly-include="questions-set"></div>
             <div class="survey--buttons">
                 <button type="button" class="start-button btn btn-lg btn-yellow" data-once="analytic-tags-processed"
                         data-analytics-link="{&quot;name&quot;:&quot;Get Started&quot;,&quot;position&quot;:&quot;body&quot;,&quot;group&quot;:&quot;body&quot;,&quot;href&quot;:&quot;n/a&quot;}">
@@ -116,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div data-fly-include="questions-set"></div>
                 </div>
 
                 <div class="survey--footer">
@@ -129,11 +128,11 @@
 
 <template data-fly-name="questions-set">
     <div class="survey--questions">
-        <span>Your Treatment History</span>
-        <div class="slide-1 data-analytics-form-questionblock ">
+        <span class="questionCategory"></span>
+        <div class="slide data-analytics-form-questionblock ">
             <h3 class="data-analytics-form-question">Since you've been diagnosed, how many
                 antidepressants have you tried?</h3>
-            <div class="options">
+            <div class="select-options">
                 <div><input type="radio" id="option-0" class="data-analytics-form-answer"
                             name="Since you've been diagnosed, how many antidepressants have you tried?"
                             value="1-3"><label for="option-0">1-3</label></div>
@@ -143,6 +142,8 @@
                 <div><input type="radio" id="option-2" class="data-analytics-form-answer"
                             name="Since you've been diagnosed, how many antidepressants have you tried?"
                             value="6+"><label for="option-2">6+</label></div>
+            </div>
+            <div class="abc">
             </div>
         </div>
         <div class="survey--buttons">

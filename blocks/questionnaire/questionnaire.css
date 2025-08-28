@@ -445,3 +445,14 @@ body.modal-open {
         display: block !important;
     }
 }
+@media (min-width: 768px) {
+    .slide .options {
+        margin-top: 30px;
+    }
+}
+ .slide .options {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     margin-top: 24px;
+ }
